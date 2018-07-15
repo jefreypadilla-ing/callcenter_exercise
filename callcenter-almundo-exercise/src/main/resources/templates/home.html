@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf + Spring Security</title>
+
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="starter-template">
+
+        <h2>Listado de Empleados</h2>
+
+        <div id="list_empleados">
+        <div th:if="${listEmpleados != null}">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Tipo</th>
+                        <th>Disponibilidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="emp : ${listEmpleados}">
+                        <td th:text="${emp.codigo}">codigo</td>
+                        <td th:text="${emp.nombres}">nombres</td>
+                        <td th:text="${emp.apellidos}">apellidos</td>
+                        <td th:text="${emp.tipoEmpleado}">tipo empleado</td>
+                        <td th:text="${emp.disponibilidad}">Disponibilidad</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if="${listEmpleados eq null}">
+            no data.
+        </div>
+
+            <div class="text-center message_list" >
+                <h4 class="text text-danger" th:text="${mensaje}"></h4>
+            </div>
+
+        </div>
+
+        <form action="#" th:action="@{/dispatcher}" method="post">
+            <input type="submit" class="btn btn-primary btn_call" value="Call" />
+        </form>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="fragments/footer :: footer"/>
+<script>
+
+    //var myVar;
+
+    $(".btn_call").click(function () {
+       updateList();
+    });
+
+    function updateList() {
+        $.ajax({
+            type: 'GET',
+            url: "/getListEmpleados",
+            contentType: "application/x-www-form-urlencoded;charset=UTF-8",
+            success: function(data) {
+                $("#list_empleados").html(data);
+            },
+            error:function(){
+                alert("Error al ejecutar consulta");
+            }
+        });
+    }
+
+    /*
+    $(document).ready(function(){
+        myVar = setInterval("updateList()", 2000);
+    });
+    */
+
+</script>
+
+</body>
+</html>

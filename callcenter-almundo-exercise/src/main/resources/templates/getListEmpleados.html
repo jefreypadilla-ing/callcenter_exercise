@@ -1,0 +1,31 @@
+<div th:if="${listEmpleados != null}">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Tipo</th>
+            <th>Disponibilidad</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="emp : ${listEmpleados}">
+            <td th:text="${emp.codigo}">codigo</td>
+            <td th:text="${emp.nombres}">nombres</td>
+            <td th:text="${emp.apellidos}">apellidos</td>
+            <td th:text="${emp.tipoEmpleado}">tipo empleado</td>
+            <td></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div th:if="${listEmpleados eq null}">
+    no data.
+</div>
+
+<div class="text-center message_list" >
+    <h4 class="text text-danger" th:text="${mensaje}"></h4>
+</div>
