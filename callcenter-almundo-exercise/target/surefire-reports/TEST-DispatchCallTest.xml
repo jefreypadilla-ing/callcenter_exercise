@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DispatchCallTest" time="8.098" tests="1" errors="0" skipped="0" failures="0">
+<testsuite name="DispatchCallTest" time="10.076" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_11\jre\bin"/>
     <property name="java.vm.version" value="25.11-b03"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\INTEL\Desktop\AlMundo.com\callcenter-almundo-exercise"/>
+    <property name="maven.multiModuleProjectDirectory" value="E:\Documentos\GitHub\callcenter_exercise\callcenter-almundo-exercise"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\INTEL\Desktop\AlMundo.com\callcenter-almundo-exercise"/>
+    <property name="user.dir" value="E:\Documentos\GitHub\callcenter_exercise\callcenter-almundo-exercise"/>
     <property name="java.runtime.version" value="1.8.0_11-b12"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_11\jre\lib\endorsed"/>
@@ -45,7 +45,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_11\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="es"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -64,5 +64,6 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="testDispatchCall" classname="DispatchCallTest" time="8.098"/>
+  <testcase name="testDispatchCallQueue" classname="DispatchCallTest" time="0.073"/>
+  <testcase name="testDispatchCall" classname="DispatchCallTest" time="10.003"/>
 </testsuite>

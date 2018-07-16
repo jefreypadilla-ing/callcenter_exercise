@@ -14,5 +14,5 @@ public interface DispatcherDao {
      * Metodo para indicar la hora de cierre de los hilos de ejecución
      * @throws Exception
      */
-    int cierreExecutorService() throws Exception;
+    int[] cierreExecutorService() throws Exception;
 }

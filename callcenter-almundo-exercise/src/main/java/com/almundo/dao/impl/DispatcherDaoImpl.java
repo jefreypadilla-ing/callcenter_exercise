@@ -34,6 +34,8 @@ public class DispatcherDaoImpl implements DispatcherDao {
 
     private int cantAtendidos;
 
+    private int cantCola;
+
     /**
      * Metodo para la instancia y limitación de cantidad de concurrencias que debe ejecutar el proceso
      */
@@ -60,11 +62,13 @@ public class DispatcherDaoImpl implements DispatcherDao {
             Empleado empleado = EmpleadoSingleton.INSTANCE.getEmpleadoQueue();
             if(empleado != null) {
                 // Se implementa ExecutorService para el control de las concurrencias y ejecución interna de los hilos
+                // Con la implementación del ExecutorService se controlan los llamados si estos superan la cantidad de concurrencias, manejando colas internas.
                 this.executorService.submit(llamadaService.iniciarLlamada(empleado, Utils.getDuracionLlamada()));
                 cantAtendidos++;
             } else {
                 // En caso de no haber disponibilidad se envia un mensaje a la vista, informando la cantidad de turnos que se deben esperar
                 logger.info("No se encontró empleado disponible, se envia a la cola de espera");
+                cantCola++;
             }
         } catch (Exception ex){
             logger.error("Error dispatchCall: ", ex);
@@ -76,8 +80,9 @@ public class DispatcherDaoImpl implements DispatcherDao {
      * Metodo para parametrizar la configuración de cierre de los hilos, administrador por ExecutorService
      */
     @Override
-    public int cierreExecutorService(){
+    public int[] cierreExecutorService(){
 
+        int[] v = new int[2];
         logger.info("Iniciando configuración de cierre :: cierreExecutorService, tiempo configurado: " + prop.getDispatcher_executorservice_time_max() + " Minutos");
         executorService.shutdown();
         try {
@@ -91,7 +96,10 @@ public class DispatcherDaoImpl implements DispatcherDao {
 
         logger.info("Se realizó cierre del proceso, total de llamadas atendidas: " + cantAtendidos);
 
-        return cantAtendidos;
+        v[0] = cantAtendidos;
+        v[1] = cantCola;
+
+        return v;
 
     }
 

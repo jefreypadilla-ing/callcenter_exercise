@@ -120,6 +120,7 @@ public enum EmpleadoSingleton {
             printPriorityQueue();
             return emp;
         } else {
+            // Con esta variable se maneja el incremento de las llamadas que quedan en la colas de espera
             cantQueueCall++;
         }
 
