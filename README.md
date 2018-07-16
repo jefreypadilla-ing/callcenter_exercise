@@ -1,4 +1,4 @@
 # CallCenter Excercise
 
-# User admin - Password admin
+User admin - Password admin
 
